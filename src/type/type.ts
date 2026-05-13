@@ -4,3 +4,12 @@ export type Req=IncomingMessage  &{
     method:Method
 };
 export type Res=ServerResponse;
+
+
+export interface IOrder{
+      id:string;
+    customer:string;
+    quantity: number;
+    food:string;
+    price: number;
+}

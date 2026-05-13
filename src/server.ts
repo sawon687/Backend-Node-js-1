@@ -13,8 +13,8 @@ const server:Server=createServer(async(req,res)=>{
    }
    if(url?.startsWith('/order'))
    {
-     await orderRoute(req as Req, res as Res)
-      return
+       await orderRoute(req as Req, res as Res)
+       return
    }
 
    sendResponse(res,{message:'Not Found'},404)
