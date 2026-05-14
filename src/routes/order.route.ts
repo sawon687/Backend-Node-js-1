@@ -40,5 +40,16 @@ export const orderRoute=async(req:Req,res:Res)=>{
        sendResponse(res,{message:data?'Deleted successfully':'Delete not success fully'},data?200:404)
        return
     }
+
+    if(method==='PUT' && id)
+    {
+         if (!body) {
+             sendResponse(res, { message: 'Invalid request body', data: null }, 400)
+             return
+         }
+         const data=await orderServices.update(id,body)
+         sendResponse(res,{message:data?'Updated successfully':'Update failed',data},data?200:400)
+         return
+    }
    
 }

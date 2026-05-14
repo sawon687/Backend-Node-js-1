@@ -56,6 +56,20 @@ async create(order:Omit<IOrder,'id'>){
       await this.writeData(data)
       return true
   }
+
+  async update(id:string,update:Partial<Omit<IOrder,'id'>>):Promise<boolean>{
+     const data=await this.readData()
+     const index=data.findIndex(order=> order.id===id)
+     console.log('exit order',index)
+     if(index==-1) return false
+     console.log(update)
+     data[index]={...data[index],...update} as IOrder
+
+      await this.writeData(data)
+      return true;
+    
+     
+  }
 }
 
 export const orderServices = new OrderService();
